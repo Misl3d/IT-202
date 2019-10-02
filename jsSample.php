@@ -19,12 +19,12 @@
 		myParagraph.innerText = "Changed it";
 		let number1 = parseInt(prompt("Pick a number"));
 		let number2 = parseInt(prompt("Pick another number"));
-		myParagraph.innerText = number1 + " + " + number2 + " =  ";
+		myParagraph.innerText = number1 + " + " + number2 + " = ";
 		myParagraph.innerText += (number1+number2);
-		console.log(myParagraph);
+		console.log(myParagraph); 
 
 		var x = document.createElement("DIV");
-		var t = document.createTextNode("This is a div element.");
+		var t = document.createTextNode("I am a div element.");
 		document.body.appendChild(x);
 	}
 	</script>
