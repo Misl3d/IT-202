@@ -41,7 +41,7 @@ function getName()
 
 		<input type="submit" value="Try it"/>
 	</form>
-	<br><a href="">Github</a><br>
+	<br><a href="https://github.com/Misl3d/IT-202/blob/master/form.php">Github</a><br>
 </body>
 </html>
 
