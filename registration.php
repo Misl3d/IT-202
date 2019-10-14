@@ -3,6 +3,7 @@
 ini_set('display_errors',1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+//Validation
 function checkPasswords(){
 	if(isset($_POST['password']) && isset($_POST['confirm'])){
 		if($_POST['password'] == $_POST['confirm']){
@@ -15,13 +16,16 @@ function checkPasswords(){
 }
 ?>
 <html>
-<br><a href="https://github.com/Misl3d/IT202/blob/master/registration.php">Github</a><br>
+<br><a href="https://github.com/Misl3d/IT-202/blob/master/registration.php">Github</a><br>
+<br><br>
 <head>
 <script>
 function validate(){
-	var form = document.forms[0];
+  var form = document.forms[0];
+
 	var password = form.password.value;
 	var conf = form.confirm.value;
+  
 	console.log(password);
 	console.log(conf);
 	let pv = document.getElementById("validation.password");
@@ -34,15 +38,12 @@ function validate(){
 	else{
 		pv.style.display = "block";
 		pv.innerText = "Passwords don't match";
-		//form.confirm.focus();
 		form.confirm.className = "error";
-		//form.confirm.style = "border: 1px solid red;";
 		succeeded = false;
 	}
+
 	var email = form.email.value;
 	var ev = document.getElementById("validation.email");
-	//this won't show if type="email" since browser handles
-	//better validation. Change to type="text" to test
 	if(email.indexOf('@') > -1){
 		ev.style.display = "none";
 	}
@@ -51,52 +52,57 @@ function validate(){
 		ev.innerText = "Please enter a valid email address";
 		succeeded = false;
 	}
-	
-	/*
-	add validation for a proper selection from dropdown.
-	First element should be "Select One", and it should require that
-	some other value is selected in order to proceed
-	*/
-	//To get element by name see next line
-	var sel = form.dd;
-	//To get by ID uncomment below
-	//sel = document.getElementById("mySelectId");
-	//sample to show debugger use
-	//succeeded = false;
-	//wrongItem.value = "";
-	if(sel.selectedIndex == 0){
-		alert("Please pick a value");
-		succeeded = false;
-	}
-	console.log(sel.options[sel.selectedIndex].value);
-	return succeeded;	
+  
+  var sel = document.getElementById("dd");
+  if (sel.value == "") {
+  alert("Please select an option!");
+  return false;
+  }
+  return true;
+}
+
+//EMPTY CHECK
+function checkIfEmpty() {
+  if (document.getElementById('email').value == "" || document.getElementById('emailconfirm').value == ""){
+    alert('Please enter an email address'); 
+    return false; 
+  }
+  if (document.getElementById('password').value == ""|| document.getElementById('confirm').value == ""){
+    alert('Please enter a password');  
+    return false; 
+  }
 }
 </script>
+
 <style>
 input { border: 1px solid black; }
 .error {border: 1px solid red;}
 .noerror {border: 1px solid black;}
 </style>
+
 </head>
 <body>
-<div style="margin-left: 50%; margin-right:50%;">
-<form method="POST" action="#" onsubmit="return validate();">
+
+<form method="POST" action="#" onsubmit="return checkIfEmpty() ;">
 <input name="name" type="text" placeholder="Enter your name"/>
-
-<input name="email" type="email" placeholder="name@example.com"/>
+<br><br>
+<input name="email" type="text" id="email" placeholder="name@email.com"/>
+<input name="emailconfirm" type="text" id="emailconfirm" placeholder="Confirm Email"/>
 <span id="validation.email" style="display:none;"></span>
-
-<input type="password" name="password" placeholder="Enter password"/>
-<input type="password" name="confirm" placeholder="Re-Enter password"/>
+<br><br>
+<input type="password" name="password" id="password" placeholder="Enter Password"/>
+<input type="password" name="confirm" id="confirm" placeholder="Confirm Password"/>
 <span style="display:none;" id="validation.password"></span>
-
-<!-- Add dropdown element (something specific to your project) -->
-<select name="dd" id="mySelectId">
-	<option value="-1">Select One</option>
-	<option value="0">Zero</option>
-	<option value="1">One</option>
+<br><br>
+User Type:
+<select id="dd">
+  <option value="User">User</option>
+  <option value="Admin">Admin</option>
+  <option value="Mod">Mod</option>
 </select>
-<input type="submit" value="Try it"/>
+<br><br>
+
+<input type="submit" value="Submit" onclick="return validate()"/>
 </form>
 </div>
 </body>
