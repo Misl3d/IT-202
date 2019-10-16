@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+	function queryParam(){
+		var params = new URLSearchParams(location.search);
+		if(params.has('page')){
+			var page = params.get('page');
+			var ele = document.getElementById(page);
+			if(ele){
+				let home = document.getElementById('Home');
+				let about = document.getElementById('About');
+				home.style.display="none";
+				about.style.display = "none";
+				ele.style.display = "block";
+			}
+		}
+		else{
+			let home = document.getElementById('Home');
+			home.style.display = "block";
+		}
+	}
+</script>
+</head>
+<body onload="queryParam();">
+	<header>
+		<nav>
+			<a href="introhtml5.html">Home</a> |
+      <a href="introhtml5About.html">About</a> |
+		</nav>
+	</header>
+	<div id="home">
+	<br><br> 
+		<!-- Home page is NOT here-->
+	</div>
+	<div id="about">
+		<head>About Page!<head/>
+            <header>Here's where I begin</header>
+            <section>
+                <article>
+                <section>
+                  <figure>
+                          Do you like pictures?
+                        <figcaption><a href="https://picsum.photos/200/300">Click me for a random picture!</a></figcaption>
+                        </figure>
+                </section>
+                <section>I'm a section</section>
+                <section>Me too!</section>
+                </article>
+            </section>
+            <footer>and this is where I end :( </footer>
+<footer></footer>
+	</div>
+	<footer></footer>
+</body>
+</html>
