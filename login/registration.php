@@ -9,10 +9,8 @@
 function checkPasswords(){
 	if(isset($_POST['password']) && isset($_POST['confirm'])){
 		if($_POST['password'] == $_POST['confirm']){
-			echo "<br>Passwords Matched!<br>";
 		}
 		else{
-			echo "<br>Password Didn't match<br>";
 			return true;
 		}
 	}

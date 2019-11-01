@@ -26,8 +26,8 @@ and password='".md5($password)."'";
 	    header("Location: index.php");
          }else{
 	echo "<div class='form'>
-<h3>Username/password is incorrect.</h3>
-<br/>Click here to <a href='login.php'>Login</a></div>";
+<h3>Something is incorrect.</h3>
+<a href='login.php'>Login Here</a></div>";
 	}
     }else{
 ?>
